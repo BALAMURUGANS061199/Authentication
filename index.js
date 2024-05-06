@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config()
 const route = require('./routes/UserRoute')
 const app = express();    //Instance Of Express
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000
 
 app.use(express.json());
 app.use('/api',route)
