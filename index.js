@@ -8,13 +8,20 @@ const PORT = process.env.PORT
 
 app.use(express.json());
 app.use('/api',route)
-app.get('/',(req,res)=>{
+app.use('/',(req,res)=>{
     res.send("Hello API")
 })
 app.listen(PORT,()=>{
 console.log(`Running PORT is ${PORT}`)
 })
 
-mongoose.connect(process.env.Mongo_URL).then(()=>{
-    console.log("DB Connected")
-})
+const MONGO_URI = process.env.Mongo_URL; // Replace with your MongoDB Atlas connection string
+mongoose.connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Connected to MongoDB Atlas');
+}).catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+});
+
