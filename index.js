@@ -17,8 +17,10 @@ console.log(`Running PORT is ${PORT}`)
 
 const MONGO_URI = process.env.Mongo_URL; // Replace with your MongoDB Atlas connection string
 mongoose.connect(MONGO_URI, {
+    bufferCommands: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
+
 }).then(() => {
     console.log('Connected to MongoDB Atlas');
 }).catch((error) => {
